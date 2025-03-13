@@ -43,6 +43,8 @@ services:
             - "3300:3306"
         networks:
             - laravel
+            
+        
 
     # PHPMyAdmin
     phpmyadmin:

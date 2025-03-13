@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
-        <title>{{ config('app.name', 'Laravel') }}</title>
+        <title>{{ config('app.name', 'Solicite') }}</title>
 
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.bunny.net">
@@ -16,20 +16,27 @@
     </head>
     <body class="font-sans antialiased">
         <div class="min-h-screen bg-gray-100 dark:bg-gray-900">
-            @include('layouts.navigation')
-
+            @if (Auth::check() && Auth::user()->isAdm())
+                @include('layouts.navigation') <!-- Navbar do admin -->
+            @else
+                @include('layouts.navigation-user') <!-- Navbar do usuário comum -->
+            @endif
+            
+            
             <!-- Page Heading -->
-            @if (isset($header))
+            @isset($header)
                 <header class="bg-white dark:bg-gray-800 shadow">
                     <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
                         {{ $header }}
+                        <!-- @yield('header', 'Página de chamados') -->
                     </div>
                 </header>
-            @endif
+            @endisset
 
             <!-- Page Content -->
             <main>
                 {{ $slot }}
+                <!-- @yield('content') -->
             </main>
         </div>
     </body>

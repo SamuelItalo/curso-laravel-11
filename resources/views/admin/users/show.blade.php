@@ -9,10 +9,16 @@
             Detalhes do Usuário {{ $user->name }}
         </h2>
     </div>
-    <ul class="max-w-md space-y-1 text-gray-500 list-disc list-inside dark:text-gray-400 mb-6">
-        <li>Nome: {{ $user->name }}</li>
-        <li>E-mail: {{ $user->email }}</li>
-    </ul>
+
+
+    
+ 
+        <ul class="max-w-md space-y-1 text-gray-500 list-disc list-inside dark:text-gray-400 mb-6">
+            <li >Nome: {{ $user->name }}</li>
+            <li>E-mail: {{ $user->email }}</li>
+        </ul>
+   
+    
     <x-alert />
 
     {{-- @can('owner', $user)

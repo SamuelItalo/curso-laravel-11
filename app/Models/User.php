@@ -50,4 +50,9 @@ class User extends Authenticatable
     {
         return in_array($this->email, config('custom.admins'));
     }
+
+    public function tickets()
+{
+    return $this->hasMany(Ticket::class);
+}
 }

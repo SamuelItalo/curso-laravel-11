@@ -26,7 +26,7 @@
                     <th scope="col" class="px-6 py-4">Ações</th>
                 </tr>
             </thead>
-            <tbody class="text-gray-600 text-sm font-light">
+            <tbody class="text-white-600 text-sm font-normal">
                 @forelse ($users as $user)
                     <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
                         <td class="px-6 py-4">{{ $user->name }}</td>

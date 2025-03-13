@@ -1,6 +1,6 @@
 @extends('admin.layouts.app')
 
-@section('title', 'Criar Novo Usuário')
+@section('title', 'Novo Chamado')
 
 @section('content')
     @include('admin.users.partials.breadcrumb')
