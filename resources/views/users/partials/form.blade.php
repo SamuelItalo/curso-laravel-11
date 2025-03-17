@@ -3,11 +3,11 @@
 <div class="">
     @csrf()
 
-    <div class="inline-flex items-center p-4 text-gray-900 border border-gray-300 rounded-lg 
+    <!-- <div class="inline-flex items-center p-2 text-gray-900 border border-gray-300 rounded-lg 
     bg-gray-50 text-base dark:bg-gray-700 dark:border-gray-600 dark:text-white 
     hover:bg-red-500 hover:text-white cursor-pointer transition duration-300">
     {{ $user->name ?? old('name') }}
-    </div>
+    </div> -->
     
     <div class="py-2 mb-5">
         

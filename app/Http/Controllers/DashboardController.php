@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Auth;
 
 class DashboardController extends Controller
 {
-    public function index()
+    public function dashboard()
     {
         if (Auth::user()->isAdm()) {
             return view('dashboard-admin');

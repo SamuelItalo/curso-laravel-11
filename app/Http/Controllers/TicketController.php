@@ -18,12 +18,25 @@ class TicketController extends Controller
         // Obtém os chamados do usuário autenticado e carrega o relacionamento com User
         //$tickets = Ticket::where('user_id', Auth::id())->with('user')->get();
         // Mostra os Chamados e pagina todos diacordo com a quantidade que escolher
-        $tickets = Ticket::paginate(6);
+        
 
-        return view('tickets.index',[
+        if (Auth::user()->isAdm()){
+
+            // Administradores veem todos os chamados
+            $tickets = Ticket::paginate(10);
+            return view('admin.users.index-admin', [
+                'tickets' => $tickets,
+                'user' => auth()->user()
+            ]);
+        }
+
+        // Usuários comuns veem apenas seus chamados
+        $tickets = Ticket::where('user_id', Auth::id())->paginate(10);
+        return view('users.tickets.index-user', [
             'tickets' => $tickets,
             'user' => auth()->user()
         ]);
+        
        
     }
 
@@ -54,9 +67,15 @@ class TicketController extends Controller
             'descricao' => $request->descricao,
         ]);
 
-        return redirect()
+        if (Auth::user()->isAdm()) {
+            return redirect()
             ->route('tickets.index')
             ->with('success', 'Chamado registrado com sucesso!');
+        }
+        return redirect()
+        ->route('tickets.index')
+        ->with('success', 'Chamado registrado com sucesso!');
+        
     }
 
     /**
@@ -81,8 +100,27 @@ class TicketController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $ticket = Ticket::findOrFail($id);
+        // Verifica se o usuário é administrador antes de permitir a atualização
+        if (!auth()->user()->isAdm()) {
+            return redirect()->route('tickets.index')->with('error', 'Você não tem permissão para alterar o status.');
+            }
+
+         // Validação do status
+        $request->validate([
+            'status' => 'required|in:aberto,em andamento,fechado',
+        ]);
+
+        // Atualiza o status do ticket
+        
+        $ticket->update([
+        'status' => $request->status,
+        ]);
+
+        return redirect()->route('tickets.index')->with('success', 'Status do chamado atualizado com sucesso!');
     }
+
+        
 
     /**
      * Remove the specified resource from storage.
@@ -99,6 +137,8 @@ class TicketController extends Controller
     public function mytickets() 
     {
 
-        return view('users.tickets.index');
+        return view('users.tickets.create', [
+            'user' => auth()->user()
+        ]);
     }
 }

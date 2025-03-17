@@ -19,9 +19,16 @@
         </ul>
     </div>
     @can('is-admin')
-        <form action="{{ route('ticket.destroy', $ticket->id) }}" method="post">
+        <form action="{{ route('ticket.update', $ticket->id) }}" method="post">
             @csrf
-            @method('delete')
+            @method('PATCH')
+            <select name="status" class="form-select">
+                <option value="aberto" {{ $ticket->status == 'aberto' ? 'selected' : '' }}>Aberto</option>
+                <option value="em andamento" {{ $ticket->status == 'em andamento' ? 'selected' : '' }}>Em andamento</option>
+                <option value="fechado" {{ $ticket->status == 'fechado' ? 'selected' : '' }}>Fechado</option>
+            </select>
+
+            
             <button type="submit"
                 class=" text-white bg-blue-700 hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-900">Mudar statos</button>
         </form>
