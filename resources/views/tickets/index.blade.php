@@ -22,9 +22,10 @@
                 <tr>
                     <th scope="col" class="px-6 py-4">Nome</th>
                     <th scope="col" class="px-6 py-4">Título do chamado</th>
-                    <th scope="col" class="px-6 py-4">Esatus</th>
+                    <th scope="col" class="px-6 py-4">Status</th>
                 </tr>
             </thead>
+            
             <tbody class="text-white-600 text-sm font-normal">
                 <ul>
                 @foreach ($tickets as $ticket)

@@ -84,8 +84,14 @@ class TicketController extends Controller
     public function show(string $id)
     {
         $ticket = Ticket::find($id);
+    
+        if (!$ticket) {
+            abort(404, 'Chamado não encontrado.');
+        }
+    
         return view('tickets.show', compact('ticket'));
     }
+    
 
     /**
      * Show the form for editing the specified resource.

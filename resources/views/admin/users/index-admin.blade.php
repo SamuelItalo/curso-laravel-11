@@ -22,9 +22,11 @@
                 <tr>
                     <th scope="col" class="px-6 py-4">Nome</th>
                     <th scope="col" class="px-6 py-4">Título do chamado</th>
-                    <th scope="col" class="px-6 py-4">Esatus</th>
+                    <th scope="col" class="px-6 py-4">Status</th>
                 </tr>
             </thead>
+
+
             <tbody class="text-white-600 text-sm font-normal">
                 <ul>
                 @foreach ($tickets as $ticket)
@@ -33,12 +35,11 @@
                     <td class="px-6 py-4">{{ $ticket->titulo }}</td>
                     <td class="px-6 py-4">{{ $ticket->status }} - 
                         <!-- <a href="{{ route('users.edit', $user->id) }}">Edit</a> -  -->
-                        <a href="{{ route('ticket.show', $ticket->id) }}">Detalhes</a>
+                        
+                        <a href="{{ route('tickets.show', $ticket->id) }}">Detalhes</a>
                     </td>
                         
-                    <!-- <li>
-                        <a href="{{ route('ticket.show', $ticket->id) }}">{{ $ticket->titulo }} </a> - Status: {{ $ticket->status }} - {{ $user->name }}
-                    </li> -->
+                   
                 </tr>
                     
                 @endforeach

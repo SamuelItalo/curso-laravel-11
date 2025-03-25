@@ -10,17 +10,17 @@
 
     
     <div class="py-6">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class=" inline-flex bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg
-            hover:bg-blue-500 hover:text-white cursor-pointer transition duration-300">
-                <div class="p-6 text-gray-900 dark:text-gray-100">
-                    {{ __("Bem-vindo ao Solicite") }}
-                </div>
+    <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+            <div class="group flex items-center justify-center bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg 
+            transition duration-300 w-full p-6 hover:bg-blue-600 dark:hover:bg-blue-500">
+            <p class="text-gray-900 dark:text-gray-100 text-lg font-semibold group-hover:text-white ">
+                {{ __("Bem-vindo ao Solicite") }}
+            </p>
             </div>
         </div>
-
-        
     </div>
+
+
 
     <!-- <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
